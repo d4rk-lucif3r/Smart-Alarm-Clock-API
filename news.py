@@ -29,7 +29,7 @@ def get_news(tts_enbled: bool) -> None:
     New Notification and info log is created each time new data is fetched
     """
     api_key = get_api_key()
-    country = 'gb'
+    country = 'in'
     url = 'https://newsapi.org/v2/top-headlines?country={}&apiKey={}' \
         .format(country, api_key)
     new_news = requests.get(url).json()
