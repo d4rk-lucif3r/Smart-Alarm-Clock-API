@@ -36,7 +36,7 @@ def get_news(tts_enbled: bool) -> None:
     with open('assets/news.json', 'w') as news_file:
         json.dump(new_news, news_file, indent=2)
 
-    for i in range(5):
+    for i in range(3):
         news_notification = ({'timestamp':
                               time.strftime('%H:%M:%S'),
                               'type': 'News',
