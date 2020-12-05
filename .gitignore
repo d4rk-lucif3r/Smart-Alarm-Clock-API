@@ -2,5 +2,5 @@
 *.pyc
 *.json
 *.log
-/assets/*.json
+/assets/
 !/assets/config.json 
