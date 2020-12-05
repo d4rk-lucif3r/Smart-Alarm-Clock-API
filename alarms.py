@@ -28,7 +28,7 @@ def add_alarm(alarm: dict) -> list:
     each one to a list, appends the new alarms to the same list and
     writes that list to the same json file. 
     """
-    with open('assets/alarms.json', 'r') as alarms_file:
+    with open('assets/alarms.json', 'w') as alarms_file:
         # Attempts to load contents of the file. If it's empty, an
         # empty list is defined and a warning is sent to the log file.
         try:
@@ -51,7 +51,7 @@ def get_alarms() -> dict:
     This function reads the alarms.json file and returns its contents to
     a dictionary.This dictionary is used to show alarms in UI
     """
-    with open('assets/alarms.json', 'r') as alarms_file:
+    with open('assets/alarms.json', 'w') as alarms_file:
         try:
             alarm_list = json.load(alarms_file)
         except Exception:

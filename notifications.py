@@ -11,7 +11,7 @@ def new_notification(notification_object: dict) -> None:
     """
     # Attempts to load contents of the file. If it's empty, an
     # empty list is defined and a warning is sent to the log file.
-    with open('assets/notifications.json', 'r') as notification_file:
+    with open('assets/notifications.json', 'w') as notification_file:
         try:
             notifications = json.load(notification_file)
         except Exception as error:
