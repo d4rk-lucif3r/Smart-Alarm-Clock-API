@@ -60,3 +60,7 @@ def notification_clear():
         # Start the timer to run this function every 60 seconds.
 
 
+def clearAllNotification():
+    notification_clear_object = []
+    with open('notifications.json', 'w') as notification_file:
+        json.dump(notification_clear_object, notification_file, indent=2)

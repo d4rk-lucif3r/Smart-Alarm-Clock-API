@@ -61,4 +61,12 @@ def get_news(tts_enbled: bool) -> None:
         json.dump(new_news, news_file, indent=2)
 
 
-
+def clearNews():
+    """
+    This function is responsible for clearing data in
+    "news.json" each time reset butoon on UI 
+    is pressed
+    """
+    clearAllNews = []
+    with open('news.json', 'w') as news_file:
+        json.dump(clearAllNews, news_file, indent=2)

@@ -8,13 +8,13 @@ time of setting an alarm then Each time alarm goes off
 Latest news and weather update is played using text to speech
 Covid news is played evrytime alarm goes off
 """
-from covid_notifications import get_covid_data
+from covid_notifications import get_covid_data, clear_covid_news
 from flask import Flask, request, render_template, redirect
-from alarms import add_alarm, alarmTobeDeleted, get_alarms
-from news import get_news
-from notifications import update_notifications, notification_clear
-from weather import get_weather
-
+from alarms import add_alarm, alarmTobeDeleted, get_alarms, clearAlarms
+from news import get_news, clearNews
+from notifications import update_notifications, notification_clear, clearAllNotification
+from weather import get_weather, clearAllWeather
+from logger import clearLogs,info_log
 
 smartClock = Flask(__name__)
 
@@ -91,7 +91,19 @@ def notification_clear_function():
     return redirect('/')
 
 
-
+@smartClock.route('/clear',  methods=['GET', 'POST'])
+def clearAll():
+    """
+    This function calls all clearing functions from all modules
+    """
+    clearAllNotification()
+    clearAllWeather()
+    clearNews()
+    clearAlarms()
+    clear_covid_news()
+    clearLogs()
+    info_log("Cleared all .json files")
+    return redirect('/')
 
 
 if __name__ == '__main__':

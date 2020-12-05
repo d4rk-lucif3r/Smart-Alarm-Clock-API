@@ -70,4 +70,12 @@ def get_weather(tts_enabled: bool) -> None:
         json.dump(new_weather, weather_file, indent=2)
 
 
-
+def clearAllWeather():
+    """
+    This function is responsible for clearing data in
+    "weather.json" each time reset butoon on UI 
+    is pressed
+    """
+    clearWeather = []
+    with open('weather.json', 'w') as weather_file:
+        json.dump(clearWeather, weather_file, indent=2)

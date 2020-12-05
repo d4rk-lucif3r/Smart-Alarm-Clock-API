@@ -35,4 +35,11 @@ def error_log(message: str) -> None:
     logging.error(message)
 
 
-
+def clearLogs():
+    """
+    This function is responsible for clearing logs in
+    "logs.log" each time reset button on UI 
+    is pressed
+    """
+    with open('logs.log', 'w') as log_file:
+        log_file.truncate(0)

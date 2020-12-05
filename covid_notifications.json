@@ -1,11 +1,11 @@
 [
   {
-    "date": "2020-12-03",
+    "date": "2020-11-30",
     "name": "England",
     "code": "E92000001",
     "cases": {
-      "daily": 11992,
-      "cumulative": 1438725
+      "daily": 10869,
+      "cumulative": 1401792
     },
     "deaths": {
       "daily": null,
