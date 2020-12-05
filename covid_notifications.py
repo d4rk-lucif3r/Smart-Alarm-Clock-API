@@ -60,4 +60,12 @@ def get_covid_data(tts_enabled: bool):
     with open('covid_notifications.json', 'w') as covid_file:
         json.dump(new_covid_data, covid_file, indent=2)
 
-
+def clear_covid_news():
+    """
+    This function is responsible for clearing data in
+    "covid_notifications.json" each time reset butoon on UI 
+    is pressed
+    """
+    new_covid_data = []
+    with open('covid_notifications.json', 'w') as covid_file:
+        json.dump(new_covid_data, covid_file, indent=2)
