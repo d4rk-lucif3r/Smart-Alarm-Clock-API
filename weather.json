@@ -1,0 +1,43 @@
+{
+  "coord": {
+    "lon": -91.97,
+    "lat": 34.54
+  },
+  "weather": [
+    {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 5.57,
+    "feels_like": 2.18,
+    "temp_min": 5,
+    "temp_max": 6.11,
+    "pressure": 1023,
+    "humidity": 93
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 3.1,
+    "deg": 60
+  },
+  "clouds": {
+    "all": 90
+  },
+  "dt": 1607014819,
+  "sys": {
+    "type": 1,
+    "id": 4717,
+    "country": "US",
+    "sunrise": 1607000330,
+    "sunset": 1607036244
+  },
+  "timezone": -21600,
+  "id": 4110001,
+  "name": "England",
+  "cod": 200
+}

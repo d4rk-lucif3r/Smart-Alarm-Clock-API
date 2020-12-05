@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="refresh" content="60;url='/'">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Basic form for alarm data entry. Template for ECM1400 CA3 2020. ">
+  <meta name="author" content="Matt Collison">
+  {% if favicon: %}
+  <link rel="icon" href="{{favicon}}">
+  {% endif %}
+
+  <title>ECM1400 Flask Form Bootstrap Template</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+
+
+</head>
+
+<body class="text-center">
+  <div class="container">
+    <div class="row">
+
+      <!-- ALARMS COLUMN -->
+      <div class="col-sm">
+        Alarms: <br />
+
+        {% for alarm in alarm_list: %}
+        <!--Displays the time of each alarm and its label.-->
+
+        <div class="toast" data-autohide="false">
+          <div class="toast-header">
+            <strong class="mr-auto">{{alarm['title']}}, {{alarm['label']}}</strong>
+            <form action="/delete_alarm" method="get">
+              <button type="index" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" name=alarm_item
+                value="{{ alarm['title'] }}">
+                <span aria-hidden="true">&times;</span>
+              </button>
+
+            </form>
+          </div>
+          <div class="toast-body">
+            <strong class="mr-auto">{{alarm['news']}} & {{alarm['weather']}}</strong>
+
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="col-sm">
+
+        <form action="/submit" method="get" class="form-alarms">
+          <img class="mb-4" src="{{favicon}}" alt="" width="72" height="72">
+          <h1 class="h3 mb-3 font-weight-normal">{{title}}</h1>
+
+          <input type="datetime-local" name="alarm" class="form-control">
+          <br>
+          <input name="two" placeholder="Update label" required="">
+          <br>
+          <div class="checkbox mb-3">
+            <input type="checkbox" name="news" value="news"> Include news briefing?
+          </div>
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" name="weather" value="weather"> Include weather briefing?
+            </label>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+
+          <p class="mt-5 mb-3 text-muted"></p>
+        </form>
+     
+        <p class="mt-5 mb-3 text-muted">© 2020</p>
+      </div>
+
+
+      <!-- NOTIFICATIONS COLUMN -->
+      <div class="col-sm">
+        Notifications:
+        {% for notification in notification_list: %}
+        <div class="toast" data-autohide="false">
+          <div class="toast-header">
+            <strong class="mr-auto">{{ notification['title'] }}</strong>
+            <form action="/notification-clear" method="get">
+              <button type="submit" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" name=notif
+                value="{{ notification['title'] }}">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </form>
+          </div>
+          <div class="toast-body">
+            {{ notification['content'] }}
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $(".toast").toast('show');
+    });
+  </script>
+
+</body>
+
+</html>

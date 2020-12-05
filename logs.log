@@ -1,0 +1,46 @@
+DEBUG: 2020-12-01 21:07:23,432 Starting new HTTPS connection (1): newsapi.org:443
+DEBUG: 2020-12-01 21:07:24,203 https://newsapi.org:443 "GET /v2/top-headlines?country=gb&apiKey=51be2cd324284914b96cae35d506380c HTTP/1.1" 200 None
+WARNING: 2020-12-01 21:07:24,447 Expecting value: line 1 column 1 (char 0)
+INFO: 2020-12-01 21:07:24,447 {'timestamp': '21:07:24', 'type': 'news', 'description': "New news articles'Several dead' and others injured after car drives into pedestrians in southwest Germany - Sky News", 'error': ''}
+INFO: 2020-12-01 21:07:24,476 {'timestamp': '21:07:24', 'type': 'news', 'description': 'New news articlesUK among hardest hit nations by pandemic, says OECD - BBC News', 'error': ''}
+INFO: 2020-12-01 21:07:24,485 {'timestamp': '21:07:24', 'type': 'news', 'description': 'New news articlesCoronavirus latest: Weekly excess deaths surpass 2000 in England and Wales - Financial Times', 'error': ''}
+INFO: 2020-12-01 21:07:24,494 {'timestamp': '21:07:24', 'type': 'news', 'description': 'New news articlesTeam and injury news: Man United v Paris Saint-Germain - Manchester United', 'error': ''}
+INFO: 2020-12-01 21:07:24,503 {'timestamp': '21:07:24', 'type': 'news', 'description': 'New news articlesNorthern Labour MPs reluctant to abstain on Covid tiers vote - The Guardian', 'error': ''}
+DEBUG: 2020-12-01 21:07:24,507 Starting new HTTPS connection (1): api.openweathermap.org:443
+DEBUG: 2020-12-01 21:07:24,852 https://api.openweathermap.org:443 "GET /data/2.5/weather?q=England%20%20%20%20%20&appid=2707bb29ff135f8ad012328e55cf3819&units=metric HTTP/1.1" 200 452
+INFO: 2020-12-01 21:07:24,863 {'timestamp': '21:07:24', 'type': 'weather', 'description': 'Current Weather in England has been updated.', 'error': ''}
+DEBUG: 2020-12-01 21:07:24,866 Starting new HTTPS connection (1): api.coronavirus.data.gov.uk:443
+DEBUG: 2020-12-01 21:07:25,177 https://api.coronavirus.data.gov.uk:443 "GET /v1/data?filters=areaType%3Dnation%3BareaName%3Dengland&structure=%7B%22date%22%3A%22date%22%2C%22name%22%3A%22areaName%22%2C%22code%22%3A%22areaCode%22%2C%22cases%22%3A%7B%22daily%22%3A%22newCasesByPublishDate%22%2C%22cumulative%22%3A%22cumCasesByPublishDate%22%7D%2C%22deaths%22%3A%7B%22daily%22%3A%22newDeathsByDeathDate%22%2C%22cumulative%22%3A%22cumDeathsByDeathDate%22%7D%7D&latestBy=newCasesByPublishDate HTTP/1.1" 200 None
+INFO: 2020-12-01 21:07:25,189 {'timestamp': '21:07:25', 'type': 'Covid News', 'description': 'New Covid Data forEngland', 'error': ''}
+ERROR: 2020-12-01 21:07:25,190 <class 'Exception'>
+INFO: 2020-12-01 21:07:25,197 127.0.0.1 - - [01/Dec/2020 21:07:25] "[37mGET / HTTP/1.1[0m" 200 -
+INFO: 2020-12-01 21:07:25,612 127.0.0.1 - - [01/Dec/2020 21:07:25] "[37mGET /static/images/logo.ico HTTP/1.1[0m" 200 -
+INFO: 2020-12-01 21:07:27,787  * Detected change in 'd:\\Projects\\Smart Alarm Clock\\api.py', reloading
+INFO: 2020-12-01 21:08:26,381 {'timestamp': '21:08:26', 'type': 'news', 'description': "New news articles'Several dead' and others injured after car drives into pedestrians in southwest Germany - Sky News", 'error': ''}
+INFO: 2020-12-01 21:08:26,390 {'timestamp': '21:08:26', 'type': 'news', 'description': 'New news articlesUK among hardest hit nations by pandemic, says OECD - BBC News', 'error': ''}
+INFO: 2020-12-01 21:08:26,397 {'timestamp': '21:08:26', 'type': 'news', 'description': 'New news articlesCoronavirus latest: Weekly excess deaths surpass 2000 in England and Wales - Financial Times', 'error': ''}
+INFO: 2020-12-01 21:08:26,406 {'timestamp': '21:08:26', 'type': 'news', 'description': 'New news articlesTeam and injury news: Man United v Paris Saint-Germain - Manchester United', 'error': ''}
+INFO: 2020-12-01 21:08:26,413 {'timestamp': '21:08:26', 'type': 'news', 'description': 'New news articlesNorthern Labour MPs reluctant to abstain on Covid tiers vote - The Guardian', 'error': ''}
+DEBUG: 2020-12-01 21:08:26,417 Starting new HTTPS connection (1): api.openweathermap.org:443
+DEBUG: 2020-12-01 21:08:26,768 https://api.openweathermap.org:443 "GET /data/2.5/weather?q=England%20%20%20%20%20&appid=2707bb29ff135f8ad012328e55cf3819&units=metric HTTP/1.1" 200 452
+INFO: 2020-12-01 21:08:26,786 {'timestamp': '21:08:26', 'type': 'weather', 'description': 'Current Weather in England has been updated.', 'error': ''}
+DEBUG: 2020-12-01 21:08:26,788 Starting new HTTPS connection (1): api.coronavirus.data.gov.uk:443
+DEBUG: 2020-12-01 21:08:27,997 https://api.coronavirus.data.gov.uk:443 "GET /v1/data?filters=areaType%3Dnation%3BareaName%3Dengland&structure=%7B%22date%22%3A%22date%22%2C%22name%22%3A%22areaName%22%2C%22code%22%3A%22areaCode%22%2C%22cases%22%3A%7B%22daily%22%3A%22newCasesByPublishDate%22%2C%22cumulative%22%3A%22cumCasesByPublishDate%22%7D%2C%22deaths%22%3A%7B%22daily%22%3A%22newDeathsByDeathDate%22%2C%22cumulative%22%3A%22cumDeathsByDeathDate%22%7D%7D&latestBy=newCasesByPublishDate HTTP/1.1" 200 None
+INFO: 2020-12-01 21:08:28,012 {'timestamp': '21:08:28', 'type': 'Covid News', 'description': 'New Covid Data forEngland', 'error': ''}
+ERROR: 2020-12-01 21:08:28,012 <class 'Exception'>
+INFO: 2020-12-01 21:08:28,030 127.0.0.1 - - [01/Dec/2020 21:08:28] "[37mGET / HTTP/1.1[0m" 200 -
+INFO: 2020-12-01 21:08:28,294  * Detected change in 'd:\\Projects\\Smart Alarm Clock\\api.py', reloading
+INFO: 2020-12-03 22:30:18,558 {'timestamp': '22:30:18', 'type': 'news', 'description': 'New news articlesPrimark chaos as shoppers wait up to 6 HOURS to get inside then face hour-long queue to pay - The Sun', 'error': ''}
+INFO: 2020-12-03 22:30:18,614 {'timestamp': '22:30:18', 'type': 'news', 'description': 'New news articlesInjuries reported after large explosion in Bristol industrial area - The Guardian', 'error': ''}
+INFO: 2020-12-03 22:30:18,646 {'timestamp': '22:30:18', 'type': 'news', 'description': 'New news articlesSarah Harding: Girls Aloud star reveals she is writing life story following advanced cancer diagnosis - Sky News', 'error': ''}
+INFO: 2020-12-03 22:30:18,655 {'timestamp': '22:30:18', 'type': 'news', 'description': 'New news articlesSurvey reveals which clubs are best at dealing with European hangovers... and Klopp has impressed - Daily Mail', 'error': ''}
+INFO: 2020-12-03 22:30:18,665 {'timestamp': '22:30:18', 'type': 'news', 'description': 'New news articlesRoyal POLL: Would you choose republicanism over Prince Charles when Queen dies? - Express', 'error': ''}
+DEBUG: 2020-12-03 22:30:18,671 Starting new HTTPS connection (1): api.openweathermap.org:443
+DEBUG: 2020-12-03 22:30:19,491 https://api.openweathermap.org:443 "GET /data/2.5/weather?q=England%20%20%20%20%20&appid=2707bb29ff135f8ad012328e55cf3819&units=metric HTTP/1.1" 200 462
+INFO: 2020-12-03 22:30:19,503 {'timestamp': '22:30:19', 'type': 'weather', 'description': 'Current Weather in England has been updated.', 'error': ''}
+DEBUG: 2020-12-03 22:30:19,507 Starting new HTTPS connection (1): api.coronavirus.data.gov.uk:443
+DEBUG: 2020-12-03 22:30:20,826 https://api.coronavirus.data.gov.uk:443 "GET /v1/data?filters=areaType%3Dnation%3BareaName%3Dengland&structure=%7B%22date%22%3A%22date%22%2C%22name%22%3A%22areaName%22%2C%22code%22%3A%22areaCode%22%2C%22cases%22%3A%7B%22daily%22%3A%22newCasesByPublishDate%22%2C%22cumulative%22%3A%22cumCasesByPublishDate%22%7D%2C%22deaths%22%3A%7B%22daily%22%3A%22newDeathsByDeathDate%22%2C%22cumulative%22%3A%22cumDeathsByDeathDate%22%7D%7D&latestBy=newCasesByPublishDate HTTP/1.1" 200 None
+INFO: 2020-12-03 22:30:20,898 {'timestamp': '22:30:20', 'type': 'Covid News', 'description': 'New Covid Data forEngland', 'error': ''}
+ERROR: 2020-12-03 22:30:20,916 <class 'Exception'>
+INFO: 2020-12-03 22:30:21,043 127.0.0.1 - - [03/Dec/2020 22:30:21] "[37mGET / HTTP/1.1[0m" 200 -
+INFO: 2020-12-03 22:30:21,812 127.0.0.1 - - [03/Dec/2020 22:30:21] "[37mGET /static/images/logo.ico HTTP/1.1[0m" 200 -

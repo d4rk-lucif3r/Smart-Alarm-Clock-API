@@ -1,0 +1,5 @@
+flask
+schedule
+datetime
+pyttsx3
+
