@@ -27,7 +27,7 @@ def get_covid_data(tts_enabled: bool):
     data=requests.get(url).json()
     new_covid_data = data['DL']
 
-    with open('covid_notifications.json', 'w') as covid_file:
+    with open('assets/covid_notifications.json', 'w') as covid_file:
         json.dump(new_covid_data, covid_file, indent=2)
 
         new_covid_notification = ({'timestamp':
@@ -57,7 +57,7 @@ def get_covid_data(tts_enabled: bool):
             except RuntimeError:
                 error_log(RuntimeError)
 
-    with open('covid_notifications.json', 'w') as covid_file:
+    with open('assets/covid_notifications.json', 'w') as covid_file:
         json.dump(new_covid_data, covid_file, indent=2)
 
 def clear_covid_news():
@@ -67,5 +67,5 @@ def clear_covid_news():
     is pressed
     """
     new_covid_data = []
-    with open('covid_notifications.json', 'w') as covid_file:
+    with open('assets/covid_notifications.json', 'w') as covid_file:
         json.dump(new_covid_data, covid_file, indent=2)

@@ -17,7 +17,7 @@ def get_api_key() -> str:
     This function fetches the openweathermap api key
     from the config file.
     """
-    with open('config.json', 'r') as config_file:
+    with open('assets/config.json', 'r') as config_file:
         api_keys = json.load(config_file)
     return api_keys['openweathermap']['api']
 
@@ -30,12 +30,12 @@ def get_weather(tts_enabled: bool) -> None:
     New Notification and info log is created each time new data is fetched
     """
     # location
-    location = 'England'
+    location = 'New Delhi'
     api_key = get_api_key()
     url = 'https://api.openweathermap.org/data/2.5/weather?q={} \
     &appid={}&units=metric'.format(location, api_key)
     new_weather = requests.get(url).json()
-    with open('weather.json', 'w') as weather_file:
+    with open('assets/weather.json', 'w') as weather_file:
         json.dump(new_weather, weather_file, indent=2)
     weather_notification = ({'timestamp':
                              time.strftime('%H:%M:%S'),
@@ -66,7 +66,7 @@ def get_weather(tts_enabled: bool) -> None:
                 + "Maximum Temperature is"+str(new_weather['main']['temp_max']))
         except RuntimeError :
             error_log(RuntimeError)
-    with open('weather.json', 'w') as weather_file:
+    with open('assets/weather.json', 'w') as weather_file:
         json.dump(new_weather, weather_file, indent=2)
 
 
@@ -77,5 +77,5 @@ def clearAllWeather():
     is pressed
     """
     clearWeather = []
-    with open('weather.json', 'w') as weather_file:
+    with open('assets/weather.json', 'w') as weather_file:
         json.dump(clearWeather, weather_file, indent=2)

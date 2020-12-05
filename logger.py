@@ -1,7 +1,7 @@
 """This module is responsible for saving logs to the logs.log file."""
 
 import logging
-FILENAME = 'logs.log'
+FILENAME = 'assets/logs.log'
 FORMAT = '%(levelname)s: %(asctime)s %(message)s'
 
 

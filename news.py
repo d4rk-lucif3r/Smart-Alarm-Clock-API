@@ -16,7 +16,7 @@ from text_to_speech import tts
 
 def get_api_key() -> dict:
     """Fetches the newsapi api key from the config file."""
-    with open('config.json', 'r') as config_file:
+    with open('assets/config.json', 'r') as config_file:
         api_keys = json.load(config_file)
     return api_keys['newsapi']['api']
 
@@ -33,7 +33,7 @@ def get_news(tts_enbled: bool) -> None:
     url = 'https://newsapi.org/v2/top-headlines?country={}&apiKey={}' \
         .format(country, api_key)
     new_news = requests.get(url).json()
-    with open('news.json', 'w') as news_file:
+    with open('assets/news.json', 'w') as news_file:
         json.dump(new_news, news_file, indent=2)
 
     for i in range(5):
@@ -57,7 +57,7 @@ def get_news(tts_enbled: bool) -> None:
             except RuntimeError:
                 error_log(RuntimeError)
 
-    with open('news.json', 'w') as news_file:
+    with open('assets/news.json', 'w') as news_file:
         json.dump(new_news, news_file, indent=2)
 
 
@@ -68,5 +68,5 @@ def clearNews():
     is pressed
     """
     clearAllNews = []
-    with open('news.json', 'w') as news_file:
+    with open('assets/news.json', 'w') as news_file:
         json.dump(clearAllNews, news_file, indent=2)

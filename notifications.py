@@ -11,7 +11,7 @@ def new_notification(notification_object: dict) -> None:
     """
     # Attempts to load contents of the file. If it's empty, an
     # empty list is defined and a warning is sent to the log file.
-    with open('notifications.json', 'r') as notification_file:
+    with open('assets/notifications.json', 'r') as notification_file:
         try:
             notifications = json.load(notification_file)
         except Exception as error:
@@ -20,7 +20,7 @@ def new_notification(notification_object: dict) -> None:
 
     notifications.append(notification_object.copy())
 
-    with open('notifications.json', 'w') as notification_file:
+    with open('assets/notifications.json', 'w') as notification_file:
         json.dump(notifications, notification_file, indent=2)
 
 
@@ -44,7 +44,7 @@ def notification_clear():
     notificationTobeDeleted = request.args.get('notif')
     new_notification_object = []
 
-    with open('notifications.json', 'r') as notification_file:
+    with open('assets/notifications.json', 'r') as notification_file:
         try:
             notification_list = json.load(notification_file)
         except Exception as error:
@@ -55,12 +55,12 @@ def notification_clear():
             if notification['title'] != notificationTobeDeleted:
                 new_notification_object.append(notification)
 
-    with open('notifications.json', 'w') as notification_file:
+    with open('assets/notifications.json', 'w') as notification_file:
         json.dump(new_notification_object, notification_file, indent=2)
         # Start the timer to run this function every 60 seconds.
 
 
 def clearAllNotification():
     notification_clear_object = []
-    with open('notifications.json', 'w') as notification_file:
+    with open('assets/notifications.json', 'w') as notification_file:
         json.dump(notification_clear_object, notification_file, indent=2)
