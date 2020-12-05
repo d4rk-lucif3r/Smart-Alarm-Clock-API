@@ -3,3 +3,4 @@
 *.json
 *.log
 /assets/*.json
+!/assets/config.json
