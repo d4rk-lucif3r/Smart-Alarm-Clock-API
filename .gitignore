@@ -1,3 +1,5 @@
 /__pycache__
 *.pyc
-
+*.json
+/assets
+!/assets/config.json
