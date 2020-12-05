@@ -20,7 +20,8 @@ from news import get_news
 from notifications import new_notification
 from text_to_speech import tts
 from weather import get_weather
-
+import pathlib
+filename = pathlib.Path('assets/alarms.json')
 
 def add_alarm(alarm: dict) -> list:
     """
@@ -28,18 +29,23 @@ def add_alarm(alarm: dict) -> list:
     each one to a list, appends the new alarms to the same list and
     writes that list to the same json file. 
     """
-    with open('assets/alarms.json', 'r') as alarms_file:
-        # Attempts to load contents of the file. If it's empty, an
-        # empty list is defined and a warning is sent to the log file.
-        try:
-            alarms_object = json.load(alarms_file)
-        except Exception:
-            alarms_object = []
-            error_log(Exception)
-    alarms_object.append(alarm.copy())
-    with open('assets/alarms.json', 'w') as alarms_file:
-        json.dump(alarms_object, alarms_file, indent=2)
-
+    if filename.is_file():
+        with open('assets/alarms.json', 'r') as alarms_file:
+            # Attempts to load contents of the file. If it's empty, an
+            # empty list is defined and a warning is sent to the log file.
+            try:
+                alarms_object = json.load(alarms_file)
+            except Exception:
+                alarms_object = []
+                error_log(Exception)
+        alarms_object.append(alarm.copy())
+        with open('assets/alarms.json', 'w') as alarms_file:
+            json.dump(alarms_object, alarms_file, indent=2)
+    else:
+        print("alarm file created")
+        with open('assets/alarms.json', 'x') as alarms_file:
+            alarms_file.close()
+            print("alarm file closed")
     # Start alarm thread reset as the alarms json has changed.
     # return start_alarm()
     alarm_thread = Thread(target=start_alarm, args=(), daemon=True)
@@ -51,13 +57,21 @@ def get_alarms() -> dict:
     This function reads the alarms.json file and returns its contents to
     a dictionary.This dictionary is used to show alarms in UI
     """
-    with open('assets/alarms.json', 'r') as alarms_file:
-        try:
-            alarm_list = json.load(alarms_file)
-        except Exception:
-            alarm_list = []
-            error_log(Exception)
-    return alarm_list
+    if filename.is_file():
+        with open('assets/alarms.json', 'r') as alarms_file:
+            try:
+                alarm_list = json.load(alarms_file)
+            except Exception:
+                alarm_list = []
+                error_log(Exception)
+        return alarm_list
+    else:
+        print("alarm file created")
+        with open('assets/alarms.json', 'x') as alarms_file:
+            alarms_file.close()
+            print("alarm file closed")
+    return []
+    
 
 
 def alarmTobeDeleted():

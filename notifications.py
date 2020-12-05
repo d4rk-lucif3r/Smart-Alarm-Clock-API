@@ -1,7 +1,9 @@
+from fileinput import filename
 import json
 from flask import request
 from logger import error_log,warning_log
-
+import pathlib
+filename = pathlib.Path('assets/notifications.json')
 
 def new_notification(notification_object: dict) -> None:
     """
@@ -11,19 +13,24 @@ def new_notification(notification_object: dict) -> None:
     """
     # Attempts to load contents of the file. If it's empty, an
     # empty list is defined and a warning is sent to the log file.
-    with open('assets/notifications.json', 'r') as notification_file:
-        try:
-            notifications = json.load(notification_file)
-        except Exception as error:
-            notifications = []
-            warning_log(error)
+    
+    if filename.is_file():
+        with open('assets/notifications.json', 'r') as notification_file:
+            try:
+                notifications = json.load(notification_file)
+            except Exception as error:
+                notifications = []
+                warning_log(error)
 
-    notifications.append(notification_object.copy())
+        notifications.append(notification_object.copy())
 
-    with open('assets/notifications.json', 'w') as notification_file:
-        json.dump(notifications, notification_file, indent=2)
-
-
+        with open('assets/notifications.json', 'w') as notification_file:
+            json.dump(notifications, notification_file, indent=2)
+    else:
+        print("file created")
+        with open('assets/notifications.json', 'x') as notification_file:
+            notification_file.close()
+            print("file closed")
 def update_notifications() -> dict:
     """
     This function will run each time the page is refreshed.
