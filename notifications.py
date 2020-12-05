@@ -31,7 +31,7 @@ def update_notifications() -> dict:
     notifications depending if the 'Filter' button was pressed or the
     page was refreshed.
     """
-    with open('notifications.json', 'r') as notification_file:
+    with open('assets/notifications.json', 'r') as notification_file:
         try:
             notifications = json.load(notification_file)
         except Exception as error:

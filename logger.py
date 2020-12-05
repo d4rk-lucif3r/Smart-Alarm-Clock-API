@@ -41,5 +41,5 @@ def clearLogs():
     "logs.log" each time reset button on UI 
     is pressed
     """
-    with open('logs.log', 'w') as log_file:
+    with open(FILENAME, 'w') as log_file:
         log_file.truncate(0)
