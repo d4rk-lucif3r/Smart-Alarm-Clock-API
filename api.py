@@ -10,6 +10,7 @@ Covid news is played evrytime alarm goes off
 """
 from flask import Flask, redirect, render_template, request
 
+<<<<<<< HEAD
 from alarms import add_alarm, alarmTobeDeleted, clearAlarms, get_alarms
 from covid_notifications import clear_covid_news, get_covid_data
 from logger import clearLogs, info_log
@@ -17,10 +18,16 @@ from news import clearNews, get_news
 from notifications import (clearAllNotification, notification_clear,
                            update_notifications)
 from weather import clearAllWeather, get_weather
+=======
+app = Flask(__name__)
+>>>>>>> 948cf88bf464a0ea2d08772e38a5e07a87724c5e
 
 app = Flask(__name__)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 948cf88bf464a0ea2d08772e38a5e07a87724c5e
 @app.route('/')
 def home():
     """
