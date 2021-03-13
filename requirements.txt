@@ -1,4 +1,17 @@
+# ----------------------
+# Flask
+# ----------------------
 flask
+
+
 pyttsx3
 requests
 schedule
+
+
+
+# ----------------------
+# Production Server
+# ----------------------
+gevent
+gunicorn
