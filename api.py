@@ -107,4 +107,4 @@ def clearAll():
 
 
 if __name__ == '__main__':
-    smartClock.run(debug=True)
+    smartClock.run(host='0.0.0.0',debug=True)
