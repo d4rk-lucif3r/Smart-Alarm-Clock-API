@@ -16,10 +16,10 @@ from notifications import update_notifications, notification_clear, clearAllNoti
 from weather import get_weather, clearAllWeather
 from logger import clearLogs,info_log
 
-smartClock = Flask(__name__)
+app = Flask(__name__)
 
 
-@smartClock.route('/')
+@app.route('/')
 def home():
     """
     This function is responsible for fetching a list of alarms, current
@@ -40,7 +40,7 @@ def home():
     return render_template('home.html', alarm_list=alarm_list, notification_list=notification_list, favicon=favicon, title=title)
 
 
-@smartClock.route('/submit', methods=['GET', 'POST'])
+@app.route('/submit', methods=['GET', 'POST'])
 def submit():
     """
     This function is responsible for getting the details for an alarm
@@ -74,7 +74,7 @@ def submit():
         return redirect('/')
 
 
-@smartClock.route('/delete_alarm', methods=['GET', 'POST'])
+@app.route('/delete_alarm', methods=['GET', 'POST'])
 def delete_alarm():
     """
     Refer to delete alarm docstring in alarms.py
@@ -83,7 +83,7 @@ def delete_alarm():
     return redirect('/')
 
 
-@smartClock.route('/notification-clear',
+@app.route('/notification-clear',
                   methods=['GET', 'POST'])
 def notification_clear_function():
     """Refer to clear notification docstring in notifications.py"""
@@ -91,7 +91,7 @@ def notification_clear_function():
     return redirect('/')
 
 
-@smartClock.route('/clear',  methods=['GET', 'POST'])
+@app.route('/clear',  methods=['GET', 'POST'])
 def clearAll():
     """
     This function calls all clearing functions from all modules
