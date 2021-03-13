@@ -5,8 +5,8 @@
     ],
     "routes": [
         { "src": "/", "dest": "/templates/index.html" },
-        { "src": "/submit", "dest": "api.py" },
-        { "src": "/static/(.*)", "dest": "api.py" },
-        { "src": "/templates/(.*)", "dest": "api.py" }
+        { "src": "/submit", "dest": "app.py" },
+        { "src": "/static/(.*)", "dest": "app.py" },
+        { "src": "/templates/(.*)", "dest": "app.py" }
     ]
 }
