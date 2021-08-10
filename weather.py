@@ -10,7 +10,7 @@ import tempfile
 from logger import error_log, info_log
 from notifications import new_notification
 from text_to_speech import tts
-tmdir = tempfile.gettempdir()
+tmpdir = tempfile.gettempdir()
 
 def get_api_key() -> str:
     """
