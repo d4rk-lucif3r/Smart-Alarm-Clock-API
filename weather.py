@@ -6,11 +6,11 @@ import json
 import time
 
 import requests
-
+import tempfile
 from logger import error_log, info_log
 from notifications import new_notification
 from text_to_speech import tts
-
+tmp_dir = tempfile.gettempdir()
 
 def get_api_key() -> str:
     """
@@ -35,7 +35,7 @@ def get_weather(tts_enabled: bool) -> None:
     url = 'https://api.openweathermap.org/data/2.5/weather?q={} \
     &appid={}&units=metric'.format(location, api_key)
     new_weather = requests.get(url).json()
-    with open('assets/weather.json', 'w') as weather_file:
+    with open(tmpdir+'/weather.json', 'w') as weather_file:
         json.dump(new_weather, weather_file, indent=2)
     weather_notification = ({'timestamp':
                              time.strftime('%H:%M:%S'),
@@ -66,7 +66,7 @@ def get_weather(tts_enabled: bool) -> None:
                 + "Maximum Temperature is"+str(new_weather['main']['temp_max']))
         except RuntimeError :
             error_log(RuntimeError)
-    with open('assets/weather.json', 'w') as weather_file:
+    with open(tmpdir+'/weather.json', 'w') as weather_file:
         json.dump(new_weather, weather_file, indent=2)
 
 
@@ -77,5 +77,5 @@ def clearAllWeather():
     is pressed
     """
     clearWeather = []
-    with open('assets/weather.json', 'w') as weather_file:
+    with open(tmpdir+'/weather.json', 'w') as weather_file:
         json.dump(clearWeather, weather_file, indent=2)
