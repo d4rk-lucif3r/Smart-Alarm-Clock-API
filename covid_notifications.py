@@ -9,11 +9,11 @@ from urllib.parse import urlencode
 
 from requests import get
 import requests
-
+import tempfile
 from logger import error_log, info_log
 from notifications import new_notification
 from text_to_speech import tts
-
+tmpdir = tempfile.gettempdir()
 
 def get_covid_data(tts_enabled: bool):
     """
@@ -27,7 +27,7 @@ def get_covid_data(tts_enabled: bool):
     data=requests.get(url).json()
     new_covid_data = data['DL']
 
-    with open('assets/covid_notifications.json', 'w') as covid_file:
+    with open(tmpdir+'/covid_notifications.json', 'w') as covid_file:
         json.dump(new_covid_data, covid_file, indent=2)
 
         new_covid_notification = ({'timestamp':
@@ -57,7 +57,7 @@ def get_covid_data(tts_enabled: bool):
             except RuntimeError:
                 error_log(RuntimeError)
 
-    with open('assets/covid_notifications.json', 'w') as covid_file:
+    with open(tmpdir+'/covid_notifications.json', 'w') as covid_file:
         json.dump(new_covid_data, covid_file, indent=2)
 
 def clear_covid_news():
@@ -67,5 +67,5 @@ def clear_covid_news():
     is pressed
     """
     new_covid_data = []
-    with open('assets/covid_notifications.json', 'w') as covid_file:
+    with open(tmpdir+'/covid_notifications.json', 'w') as covid_file:
         json.dump(new_covid_data, covid_file, indent=2)
