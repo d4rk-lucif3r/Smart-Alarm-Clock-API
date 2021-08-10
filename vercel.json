@@ -3,13 +3,6 @@
     "builds": [
         { "src": "app.py", "use": "@vercel/python" }
     ],
-    
-  "functions": {
-    "assets/news.json": {
-      "includeFiles": "_files/**"
-    }
-  },
-
     "routes": [
         { "src": "/(.*)", "dest": "app.py" }
     ]
