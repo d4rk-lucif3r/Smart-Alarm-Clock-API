@@ -3,7 +3,9 @@ import json
 from flask import request
 from logger import error_log,warning_log
 import pathlib
-filename = pathlib.Path('assets/notifications.json')
+import tempfile
+tmpdir = tempfile.gettempdir()
+filename = pathlib.Path(tmpdir+'/notifications.json')
 
 def new_notification(notification_object: dict) -> None:
     """
@@ -15,7 +17,7 @@ def new_notification(notification_object: dict) -> None:
     # empty list is defined and a warning is sent to the log file.
     
     if filename.is_file():
-        with open('assets/notifications.json', 'r') as notification_file:
+        with open(tmpdir+'/notifications.json', 'r') as notification_file:
             try:
                 notifications = json.load(notification_file)
             except Exception as error:
@@ -24,11 +26,11 @@ def new_notification(notification_object: dict) -> None:
 
         notifications.append(notification_object.copy())
 
-        with open('assets/notifications.json', 'w') as notification_file:
+        with open(tmpdir+'/notifications.json', 'w') as notification_file:
             json.dump(notifications, notification_file, indent=2)
     else:
         print("file created")
-        with open('assets/notifications.json', 'x') as notification_file:
+        with open(tmpdir+'/notifications.json', 'x') as notification_file:
             notification_file.close()
             print("file closed")
 def update_notifications() -> dict:
@@ -38,7 +40,7 @@ def update_notifications() -> dict:
     notifications depending if the 'Filter' button was pressed or the
     page was refreshed.
     """
-    with open('assets/notifications.json', 'r') as notification_file:
+    with open(tmpdir+'/notifications.json', 'r') as notification_file:
         try:
             notifications = json.load(notification_file)
         except Exception as error:
@@ -51,7 +53,7 @@ def notification_clear():
     notificationTobeDeleted = request.args.get('notif')
     new_notification_object = []
 
-    with open('assets/notifications.json', 'r') as notification_file:
+    with open(tmpdir+'/notifications.json', 'r') as notification_file:
         try:
             notification_list = json.load(notification_file)
         except Exception as error:
@@ -62,12 +64,12 @@ def notification_clear():
             if notification['title'] != notificationTobeDeleted:
                 new_notification_object.append(notification)
 
-    with open('assets/notifications.json', 'w') as notification_file:
+    with open(tmpdir+'/notifications.json', 'w') as notification_file:
         json.dump(new_notification_object, notification_file, indent=2)
         # Start the timer to run this function every 60 seconds.
 
 
 def clearAllNotification():
     notification_clear_object = []
-    with open('assets/notifications.json', 'w') as notification_file:
+    with open(tmpdir+'/notifications.json', 'w') as notification_file:
         json.dump(notification_clear_object, notification_file, indent=2)
