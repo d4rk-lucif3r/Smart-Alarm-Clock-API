@@ -4,9 +4,6 @@
         { "src": "app.py", "use": "@vercel/python" }
     ],
     "routes": [
-        { "src": "/", "dest": "/templates/index.html" },
-        { "src": "/submit", "dest": "app.py" },
-        { "src": "/static/(.*)", "dest": "app.py" },
-        { "src": "/templates/(.*)", "dest": "app.py" }
+        { "src": "/(.*)", "dest": "app.py" }
     ]
 }
