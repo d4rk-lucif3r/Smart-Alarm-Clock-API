@@ -6,13 +6,14 @@ newsapi using api key provided in config.json file
 
 import json
 import time
-
+import os
 import requests
 
 from logger import error_log, info_log, warning_log
 from notifications import new_notification
 from text_to_speech import tts
 
+tmp_dir = os.tmpdir()
 
 def get_api_key() -> dict:
     """Fetches the newsapi api key from the config file."""
@@ -33,7 +34,7 @@ def get_news(tts_enbled: bool) -> None:
     url = 'https://newsapi.org/v2/top-headlines?country={}&apiKey={}' \
         .format(country, api_key)
     new_news = requests.get(url).json()
-    with open('assets/news.json', 'w') as news_file:
+    with open('tmp_dir/news.json', 'w') as news_file:
         json.dump(new_news, news_file, indent=2)
 
     for i in range(3):
@@ -57,7 +58,7 @@ def get_news(tts_enbled: bool) -> None:
             except RuntimeError:
                 error_log(RuntimeError)
 
-    with open('assets/news.json', 'w') as news_file:
+    with open('tmp_dir/news.json', 'w') as news_file:
         json.dump(new_news, news_file, indent=2)
 
 
