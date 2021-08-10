@@ -21,7 +21,9 @@ from notifications import new_notification
 from text_to_speech import tts
 from weather import get_weather
 import pathlib
-filename = pathlib.Path('assets/alarms.json')
+import tempfile
+tmpdir = tempfile.gettempdir()
+filename = pathlib.Path(tmpdir+'/alarms.json')
 
 def add_alarm(alarm: dict) -> list:
     """
@@ -30,7 +32,7 @@ def add_alarm(alarm: dict) -> list:
     writes that list to the same json file. 
     """
     if filename.is_file():
-        with open('assets/alarms.json', 'r') as alarms_file:
+        with open(tmpdir+'/alarms.json', 'r') as alarms_file:
             # Attempts to load contents of the file. If it's empty, an
             # empty list is defined and a warning is sent to the log file.
             try:
@@ -39,11 +41,11 @@ def add_alarm(alarm: dict) -> list:
                 alarms_object = []
                 error_log(Exception)
         alarms_object.append(alarm.copy())
-        with open('assets/alarms.json', 'w') as alarms_file:
+        with open(tmpdir+'/alarms.json', 'w') as alarms_file:
             json.dump(alarms_object, alarms_file, indent=2)
     else:
         print("alarm file created")
-        with open('assets/alarms.json', 'x') as alarms_file:
+        with open(tmpdir+'/alarms.json', 'x') as alarms_file:
             alarms_file.close()
             print("alarm file closed")
     # Start alarm thread reset as the alarms json has changed.
@@ -58,7 +60,7 @@ def get_alarms() -> dict:
     a dictionary.This dictionary is used to show alarms in UI
     """
     if filename.is_file():
-        with open('assets/alarms.json', 'r') as alarms_file:
+        with open(tmpdir+'/alarms.json', 'r') as alarms_file:
             try:
                 alarm_list = json.load(alarms_file)
             except Exception:
@@ -67,7 +69,7 @@ def get_alarms() -> dict:
         return alarm_list
     else:
         print("alarm file created")
-        with open('assets/alarms.json', 'x') as alarms_file:
+        with open(tmpdir+'/alarms.json', 'x') as alarms_file:
             alarms_file.close()
             print("alarm file closed")
     return []
@@ -100,7 +102,7 @@ def delete_alarm(alarmToBeDeleted):
     """
     new_alarm_objects = []
 
-    with open('assets/alarms.json', 'r') as alarms_file:
+    with open(tmpdir+'/alarms.json', 'r') as alarms_file:
         try:
             alarm_list = json.load(alarms_file)
         except Exception:
@@ -111,7 +113,7 @@ def delete_alarm(alarmToBeDeleted):
             if alarm['title'] != alarmToBeDeleted:
                 new_alarm_objects.append(alarm)
 
-    with open('assets/alarms.json', 'w') as alarms_file:
+    with open(tmpdir+'/alarms.json', 'w') as alarms_file:
         json.dump(new_alarm_objects, alarms_file, indent=2)
     info_log("deleted alarm"+alarmToBeDeleted)
 
@@ -131,7 +133,7 @@ def start_alarm() -> None:
     DAY = 86400
     news_call = False
     weather_call = False
-    with open('assets/alarms.json', 'r') as alarms_file:
+    with open(tmpdir+'/alarms.json', 'r') as alarms_file:
         try:
             alarm_list = json.load(alarms_file)
         except Exception:
@@ -201,5 +203,5 @@ def clearAlarms():
     UI.
     """
     clearAllAlarms = []
-    with open('assets/alarms.json', 'w') as alarms_file:
+    with open(tmpdir+'/alarms.json', 'w') as alarms_file:
         json.dump(clearAllAlarms, alarms_file, indent=2)
